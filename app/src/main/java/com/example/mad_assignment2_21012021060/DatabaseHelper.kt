@@ -1,5 +1,5 @@
 package com.example.mad_assignment2_21012021060
-
+/*
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
@@ -34,6 +34,7 @@ class DatabaseHelper :  SQLiteOpenHelper(){
 
     // drop table query
     private val DROP_USER_TABLE = "DROP TABLE IF EXISTS " + DatabaseHelper.TABLE_USER
+
     fun DatabaseHelper(context: Context?, name: String?, factory: CursorFactory?, version: Int) {
         super(context, name, factory, version)
     }
@@ -48,7 +49,7 @@ class DatabaseHelper :  SQLiteOpenHelper(){
     }
 
     fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {
-// drop user  table if exists
+     // drop user  table if exists
         sqLiteDatabase.execSQL(DROP_USER_TABLE)
 
         // create tables again
@@ -117,5 +118,5 @@ class DatabaseHelper :  SQLiteOpenHelper(){
         db.close()
         return cursorcount > 0
     }
-
-}
+    }
+*/
