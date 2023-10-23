@@ -5,7 +5,7 @@ import android.util.Patterns
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 
-class InputValidation {
+class InputValidation(context: Context) {
 
     private var context: Context? = null
     fun InputValidation(context: Context?) {
