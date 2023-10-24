@@ -112,6 +112,7 @@
                     android:background="#DFD5D5"
                     android:maxLines="1"></EditText>
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputConfirmPassword"
                 android:layout_width="match_parent"
@@ -136,7 +137,7 @@
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:backgroundTint="#1E95CA"
-                android:text="Register"/>
+                android:text="REGISTER"/>
 
             <TextView
                 android:id="@+id/textalready"
