@@ -1,76 +1,101 @@
 package com.example.mad_assignment2_21012021060
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 
 class SignupActivity : AppCompatActivity() {
+    lateinit var databaseHelper:DatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        val name:EditText=findViewById(R.id.edittextName)
-        val email:EditText=findViewById(R.id.edittextEmail)
-        val password:EditText=findViewById(R.id.edittextPassword)
-        val confirmPassword:EditText=findViewById(R.id.edittextCpass)
+        var loginTxt :TextView = findViewById(R.id.loginText);
+        loginTxt.setOnClickListener {
+            startActivity(Intent(this@SignupActivity,LoginActivity::class.java))
+        }
 
-        val n:TextInputLayout=findViewById(R.id.textInputName)
-        val e:TextInputLayout=findViewById(R.id.textInputEmail)
-        val p:TextInputLayout=findViewById(R.id.textInputPassword)
-        val cp:TextInputLayout=findViewById(R.id.textInputConfirmPassword)
+        val registerBtn : Button = findViewById(R.id.registerBtn)
+        val eName: EditText =findViewById(R.id.editTextName)
+        val eEmail: EditText =findViewById(R.id.editTextEmail)
+        val ePassword: EditText =findViewById(R.id.editTextPassword)
+        val eConfirmPassword: EditText =findViewById(R.id.editTextConfirmPassword)
+
+        val tName: TextInputLayout =findViewById(R.id.textInputName)
+        val tEmail: TextInputLayout =findViewById(R.id.textInputEmail)
+        val tPassword: TextInputLayout =findViewById(R.id.textInputPassword)
+        val tConfirmPassword: TextInputLayout =findViewById(R.id.textInputConfirmPassword)
+
+        databaseHelper = DatabaseHelper(this)
 
 
-        val databaseHelper = DatabaseHelper(this@SignupActivity)
-        val inputValidation = InputValidation(this@SignupActivity)
-        val user = User()
+        registerBtn.setOnClickListener {
 
-        val register:Button=findViewById(R.id.buttonreg)
-        register.setOnClickListener {
-            fun onClick(view: View?) {
-                if (!inputValidation.isInputEditTextFilled(name, n, "Enter full name")) {
-                    return
-                }
-                if (!inputValidation.isInputEditTextFilled(email, e, "Enter valid email")) {
-                    return
-                }
-                if (!inputValidation.isInputEditTextEmail(email, e, "Enter valid email")) {
-                    return
-                }
-                if (!inputValidation.isInputEditTextFilled(password, p, "Enter password")) {
-                    return
-                }
-                if (!inputValidation.isInputEditTextMatches(password, confirmPassword, cp, "Entered Password doesn`t matches")) {
-                    return
-                }
-                if (!databaseHelper.checkUser(email.text.toString().trim { it <= ' ' })) {
-                    user.setName(name.text.toString().trim { it <= ' ' })
-                    user.setEmail(email.text.toString().trim { it <= ' ' })
-                    user.setPassword(password.getText().toString().trim { it <= ' ' })
-                    databaseHelper.addUser(user)
-                    Toast.makeText(this@SignupActivity, "Registration Successful", Toast.LENGTH_LONG).show()
-                    //  emptyInputEditText();
-                    val intent = Intent(this@SignupActivity, LoginActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    // if record already exists then
-                    Toast.makeText(this@SignupActivity, getString(R.string.error_email_exists), Toast.LENGTH_LONG).show()
-                }
+            var name = databaseHelper.getNameFromEmail(eEmail.text.toString())
+
+            if(!eName.text.trim().isEmpty())
+            {
+                tName.isErrorEnabled=false
             }
-
+            if(!eEmail.text.trim().isEmpty())
+            {
+                tEmail.isErrorEnabled=false
+            }
+            if(!ePassword.text.trim().isEmpty())
+            {
+                tPassword.isErrorEnabled=false
+            }
+            if(!eConfirmPassword.text.trim().isEmpty())
+            {
+                tConfirmPassword.isErrorEnabled=false
+            }
+            if(!(ePassword.text.toString()!=eConfirmPassword.text.toString()))
+            {
+                tConfirmPassword.isErrorEnabled=false
             }
 
 
-        val alreadyexisttxt:TextView=findViewById(R.id.textalready)
-        alreadyexisttxt.setOnClickListener {
-            Intent(this@SignupActivity,MainActivity::class.java).also{
-                startActivity(it)
+
+            if(eName.text.trim().isEmpty())
+            {
+                tName.error = "Please enter your name"
+            }
+            else if(eEmail.text.trim().isEmpty())
+            {
+                tEmail.error = "Please enter your email"
+            }
+
+            else if(ePassword.text.trim().isEmpty())
+            {
+                tPassword.error = "Please enter password"
+            }
+
+            else if(eConfirmPassword.text.trim().isEmpty())
+            {
+                tConfirmPassword.error = "Please enter confirm password"
+            }
+            else if(ePassword.text.toString()!=eConfirmPassword.text.toString())
+            {
+                tConfirmPassword.error = "Does not match with password"
+            }
+            else if(name!=null)
+            {
+                tEmail.error = "Email already exists!"
+            }
+            else
+            {
+                databaseHelper.addUser(eName.text.toString(), eEmail.text.toString(), ePassword.text.toString())
+                startActivity(Intent(this@SignupActivity,MainActivity::class.java))
+                Toast.makeText(this,"Registered Successfully",Toast.LENGTH_SHORT).show()
             }
         }
+
     }
+
+
 }
