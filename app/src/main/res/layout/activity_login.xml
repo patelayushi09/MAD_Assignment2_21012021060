@@ -22,8 +22,8 @@
             android:layout_margin="45dp"/>
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/travelimage"
+            android:layout_height="wrap_content"
+            android:src=""
             android:scaleType="fitXY"
             android:layout_margin="10dp"/>
     </LinearLayout>

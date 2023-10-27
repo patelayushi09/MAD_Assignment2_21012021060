@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/travelimage2"
+            android:src=""
             android:scaleType="fitXY"
             android:layout_margin="10dp"/>
     </LinearLayout>
