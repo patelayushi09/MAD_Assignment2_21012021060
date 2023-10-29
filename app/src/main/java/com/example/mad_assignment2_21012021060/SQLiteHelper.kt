@@ -1,5 +1,5 @@
 package com.example.mad_assignment2_21012021060
-/*
+
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
@@ -100,4 +100,3 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
 
 }
 
- */
