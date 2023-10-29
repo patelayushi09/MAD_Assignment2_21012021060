@@ -12,6 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:cardElevation="20dp">
 
         <LinearLayout
@@ -25,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Title"
+                android:background="#DFD5D5"
                 android:textSize="18sp"
                 android:inputType="textCapSentences"
                 android:layout_marginTop="20dp"/>
@@ -34,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
+                android:background="#DFD5D5"
                 android:textSize="18sp"
                 android:inputType="textMultiLine"
                 android:lines="4"
@@ -44,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Due Date"
+                android:background="#DFD5D5"
                 android:textSize="18sp"
                 android:inputType="datetime"
                 android:layout_marginTop="20dp"/>
@@ -53,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:background="#DFD5D5"
                 android:entries="@array/priority_levels"
                 android:prompt="@string/priority_prompt"
                 android:layout_marginTop="20dp"/>
@@ -64,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="SAVE"
+                android:backgroundTint="#1E95CA"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"/>
