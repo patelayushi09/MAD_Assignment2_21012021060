@@ -1,6 +1,6 @@
 package com.example.mad_assignment2_21012021060
 
-/*
+
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -38,4 +38,3 @@ class MainActivity : AppCompatActivity() {
 
 }
 
- */
