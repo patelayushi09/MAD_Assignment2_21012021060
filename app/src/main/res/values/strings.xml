@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Task Management</string>
+    <string name="app_name">Task Manager</string>
     <string name="priority_prompt">Select Priority</string>
     <string-array name="priority_levels">
         <item>Low</item>
